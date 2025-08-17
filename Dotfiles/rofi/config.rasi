@@ -1,0 +1,145 @@
+/*******************************************************************************
+ * Rofi Theme - Sombre Violet
+ * Compatible avec votre rice i3 + Polybar + Picom
+ *******************************************************************************/
+
+configuration {
+    modi: "drun,run,window,ssh";
+    font: "JetBrains Mono Nerd Font 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: " Apps";
+    display-run: " Run";
+    display-window: " Windows";
+    display-ssh: " SSH";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hide-scrollbar: true;
+    sidebar-mode: false;
+}
+
+* {
+    bg0: #1a1a2e;
+    bg1: #16213e;
+    bg2: #2d1b69;
+    fg0: #ffffff;
+    fg1: #cccccc;
+    fg2: #8a2be2;
+    accent: #8a2be2;
+    urgent: #ff6b6b;
+    
+    background-color: transparent;
+    text-color: @fg0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    background-color: @bg0;
+    location: center;
+    width: 640;
+    border-radius: 12;
+    border: 2;
+    border-color: @accent;
+}
+
+mainbox {
+    padding: 12;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    background-color: @bg1;
+    border-color: @bg2;
+    border: 2;
+    border-radius: 8;
+    padding: 8 16;
+    spacing: 8;
+    children: [prompt, entry];
+}
+
+prompt {
+    color: @accent;
+    font: "JetBrains Mono Nerd Font Bold 12";
+}
+
+entry {
+    placeholder: "Rechercher...";
+    placeholder-color: #888888;
+    cursor: text;
+}
+
+listview {
+    padding: 8 0;
+    lines: 8;
+    columns: 1;
+    fixed-height: false;
+    dynamic: true;
+    scrollbar: false;
+}
+
+element {
+    padding: 8 12;
+    spacing: 8;
+    border-radius: 6;
+    children: [element-icon, element-text];
+}
+
+element normal normal {
+    background-color: transparent;
+    text-color: @fg0;
+}
+
+element normal urgent {
+    background-color: @urgent;
+    text-color: @bg0;
+}
+
+element normal active {
+    background-color: @bg2;
+    text-color: @fg0;
+}
+
+element selected normal {
+    background-color: @accent;
+    text-color: @bg0;
+}
+
+element selected urgent {
+    background-color: @urgent;
+    text-color: @bg0;
+}
+
+element selected active {
+    background-color: @fg2;
+    text-color: @bg0;
+}
+
+element alternate normal {
+    background-color: transparent;
+    text-color: @fg0;
+}
+
+element alternate urgent {
+    background-color: @urgent;
+    text-color: @bg0;
+}
+
+element alternate active {
+    background-color: @bg2;
+    text-color: @fg0;
+}
+
+element-icon {
+    size: 1em;
+    color: inherit;
+}
+
+element-text {
+    color: inherit;
+}
+
+element-text {
+    color: inherit;
+}
