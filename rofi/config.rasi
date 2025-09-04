@@ -65,7 +65,7 @@ prompt {
 }
 
 entry {
-    placeholder: "Rechercher...";
+    placeholder: "Search...";
     placeholder-color: #888888;
     cursor: text;
 }
@@ -87,7 +87,7 @@ element {
 }
 
 element normal normal {
-    background-color: transparent;
+    background-color: @bg2;
     text-color: @fg0;
 }
 
@@ -117,7 +117,7 @@ element selected active {
 }
 
 element alternate normal {
-    background-color: transparent;
+    background-color: @bg2;
     text-color: @fg0;
 }
 
