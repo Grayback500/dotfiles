@@ -13,15 +13,17 @@
 ;;
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
+;;; code:
 
-(doom! :input
+(doom!
+       :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;company           ; the ultimate code completion backend
+       company           ; the ultimate code completion backend
        ;;(corfu +orderless)  ; complete with cap(f), cape and a flying feather!
        ;;helm              ; the *other* search engine for love and life
        ido               ; the other *other* search engine...
@@ -33,7 +35,7 @@
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;;(emoji +unicode)  ; 🙂
+       (emoji +unicode)  ; 🙂
        ;;hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
@@ -88,6 +90,7 @@
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends
+       (dap +python +cpp)  ; Debugging support
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        ;;docker
@@ -95,7 +98,7 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
-       ;;lsp               ; M-x vscode
+       lsp               ; M-x vscode
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        pass              ; password manager for nerds
@@ -140,7 +143,7 @@
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       ;;json              ; At least it ain't XML
+       json              ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
@@ -157,7 +160,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp)              ; beautiful is better than ugly
+       (python +lsp +lsp)              ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -213,16 +216,6 @@
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-;;; Company
-;;(require 'company)
-;;(add-hook 'after-init-hook 'global-company-mode)
-;;(setq company-backends (delete 'company-semantic company-backends))
-;;(add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
-;; Enable LSP and debugging
-;;(lsp +eglot)       ; Or use +lsp for more features
-;;(dap +python +cpp)  ; Debugging support
-
 ;;; IDO
 (setq ido-everywhere t
       ido-enable-flex-matching t)
@@ -236,8 +229,24 @@
 (use-package autothemer
   :ensure t)
 
-;;;Python Jedi
-(defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
+;; Web development modes
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html\\'" "\\.css\\'" "\\.json\\'"))
 
-(add-hook 'python-mode-hook 'my/python-mode-hook)
+(use-package json-mode
+  :ensure t)
+
+(use-package css-mode
+  :ensure t)
+
+;; Configure Python interpreter based on the operating system
+(cond
+ ((eq system-type 'windows-nt) ; If running on Windows...
+  (setq python-shell-interpreter "python")) ; ...use "python"
+
+ ((eq system-type 'gnu/linux) ; If running on Linux...
+  (setq python-shell-interpreter "python3"))) ; ...use "python3"
+;;
+;;
+;;; init.el ends here

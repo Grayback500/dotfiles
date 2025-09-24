@@ -30,12 +30,12 @@
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
+;; `load-theme' function.
+;;; code:
 
 ;;; Custom load path:
 (add-to-list 'custom-theme-load-path "~/usr/share/emacs/30.1/etc/themes")
-(setq doom-theme 'doom-old-hope)
-
+(setq doom-theme 'doom-horizon)
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -87,3 +87,26 @@
 ;;; Font Size
 ;; (for Windows because this is wayy too small)
 (setq doom-font (font-spec :size 18 ))
+;;
+;;
+;;
+;;; LSP MODE auto serach and boot
+(after! lsp-mode
+  (setq lsp-auto-guess-root t)       ; Try to guess the project root
+  (setq lsp-restart 'auto-restart)   ; Automatically restart servers if needed
+)
+;;
+;;; Configure the Python LSP client (pylsp)
+(after! lsp-python
+  (setq lsp-python-ms-auto-install-server t) ; Auto-install if missing
+  ;; Ensure it can find your Python installation
+  (setq lsp-python-ms-python-executable "python") ; or full path like "C:/Python39/python.exe"
+  (setq lsp-signature-auto-activate '(:on-trigger-char :after-completion))
+  (setq lsp-signature-doc-lines 3)
+)
+;;
+;;; Enable LSP for Python files with deferred loading
+(add-hook 'python-mode-hook #'lsp-deferred)
+;;
+;;
+;;; config.el ends here
