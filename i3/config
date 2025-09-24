@@ -1,0 +1,139 @@
+exec --no-startup-id polybar main &
+exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id picom
+exec --no-startup-id xrandr --output Virtual-1 --mode 1920x1080
+
+#mod key
+set $mod Mod4
+
+#font
+font pango:monospace 8
+
+#kill focused window
+bindsym $mod+Shift+q kill
+
+#start dmenu
+bindsym $mod+d exec rofi -show drun
+
+#change focus
+bindsym $mod+Shift+Left focus left
+bindsym $mod+Shift+Down focus down
+bindsym $mod+Shift+UP focus up
+bindsym $mod+Shift+Right focus right
+
+#move focused window
+bindsym $mod+Left move left
+bindsym $mod+Down move down
+bindsym $mod+Up move up
+bindsym $mod+Right move right
+
+#split horizontal/vertical
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+#enter fullscreen
+bindsym $mod+f fullscreen toggle
+
+#change layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+#toggle floating
+bindsym $mod+Shift+space floating toggle
+
+# Naviguer entre fenêtres flottantes et tiled
+bindsym $mod+space focus mode_toggle
+
+# Centrer une fenêtre flottante
+bindsym $mod+c move position center
+
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    
+    # Flèches directionnelles
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # Retour au mode normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+mode "move" {
+    bindsym h move left 20px
+    bindsym j move down 20px
+    bindsym k move up 20px  
+    bindsym l move right 20px
+    
+    bindsym Left move left 20px
+    bindsym Down move down 20px
+    bindsym Up move up 20px
+    bindsym Right move right 20px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+
+bindsym $mod+m mode "move"
+
+#workspaces
+bindsym $mod+& workspace 1
+bindsym $mod+é workspace 2
+bindsym $mod+" workspace 3
+bindsym $mod+' workspace 4
+bindsym $mod+( workspace 5
+
+#move to workspace
+bindsym $mod+Shift+& move container to workspace 1
+bindsym $mod+Shift+é move container to workspace 2
+bindsym $mod+Shift+" move container to workspace 3
+bindsym $mod+Shift+' move container to workspace 4
+bindsym $mod+Shift+( move container to workspace 5
+
+#restart i3
+bindsym $mod+Shift+r restart
+
+#exit i3
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes' 'i3-msg exit'"
+
+#status bar
+#bar {
+#	status_command i3status
+#}
+
+# Espaces entre les fenêtres
+gaps inner 10
+gaps outer 10
+
+# Changer la taille des gaps à la volée
+bindsym $mod+plus gaps inner current plus 5
+bindsym $mod+minus gaps inner current minus 5
+bindsym $mod+Shift+plus gaps outer current plus 5
+bindsym $mod+Shift+minus gaps outer current minus 5
+
+smart_gaps on
+smart_borders on
+
+# Bordures colorées (violet pour s'accorder à votre thème)
+client.focused          #8a2be2 #8a2be2 #ffffff #9370db   #8a2be2
+client.focused_inactive #16213e #16213e #888888 #292d2e   #16213e
+client.unfocused        #16213e #16213e #888888 #292d2e   #16213e
+client.urgent           #ff6b6b #ff6b6b #ffffff #ff6b6b   #ff6b6b
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+# Supprimer les barres de titre
+default_border pixel 2
+default_floating_border pixel 2
+
+# Appliquer à toutes les fenêtres existantes
+for_window [class=".*"] border none
