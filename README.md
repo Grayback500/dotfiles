@@ -1,2 +1,2 @@
-# i3-Dotfiles
-a dotfiles for i3wm, with custom color and a dark and purple theme
+# Isaiah's Dotfiles
+Currently using i3, rofi, polybar, and kitty with a "green oak"-esque color scheme.
