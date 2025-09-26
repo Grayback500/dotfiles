@@ -108,5 +108,31 @@
 ;;; Enable LSP for Python files with deferred loading
 (add-hook 'python-mode-hook #'lsp-deferred)
 ;;
-;;
+;; Quick property setup - Properties for Org Pomodoro Studying
+(defun my/org-quick-properties ()
+  "Quickly add standard properties to current heading."
+  (interactive)
+  (org-set-property "EFFORT" "1h")
+  (org-set-property "POMODOROS" "0"))
+
+;; Enhanced clock in/out with pomodoro counting
+(defun my/org-study-clock-in ()
+  "Start studying a task with pomodoro tracking."
+  (interactive)
+  (org-clock-in)
+  (message "Study session started! Press f9 when done."))
+
+(defun my/org-study-clock-out ()
+  "Finish studying and log the pomodoro."
+  (interactive)
+  (let ((pomos (string-to-number (or (org-entry-get (point) "POMODOROS") "0"))))
+    (org-clock-out)
+    (org-set-property "POMODOROS" (number-to-string (+ 1 pomos)))
+    (message "Session complete! You've done %d pomodoros on this task." (+ 1 pomos))))
+
+;; Wait until org-mode is loaded before setting keybindings
+(after! org
+  (define-key org-mode-map (kbd "<f7>") 'my/org-quick-properties) ; properties
+  (define-key org-mode-map (kbd "<f8>") 'my/org-study-clock-in) ; clock in
+  (define-key org-mode-map (kbd "<f9>") 'my/org-study-clock-out)) ; clock out
 ;;; config.el ends here
