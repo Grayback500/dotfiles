@@ -86,7 +86,11 @@
 ;;
 ;;; Font Size
 ;; (for Windows because this is wayy too small)
-(setq doom-font (font-spec :size 18 ))
+(cond
+ ((string-equal system-name "kyoto")
+  (setq doom-font (font-spec :size 11)))
+ ((string-equal system-name "isaiahfishbowl")
+  (setq doom-font (font-spec :size 18))))
 ;;
 ;;
 ;;
