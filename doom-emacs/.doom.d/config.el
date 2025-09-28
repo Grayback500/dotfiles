@@ -35,7 +35,7 @@
 
 ;;; Custom load path:
 (add-to-list 'custom-theme-load-path "~/usr/share/emacs/30.1/etc/themes")
-(setq doom-theme 'doom-horizon)
+(setq doom-theme 'gruvbox-dark-soft)
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -88,7 +88,7 @@
 ;; (for Windows because this is wayy too small)
 (cond
  ((string-equal system-name "kyoto")
-  (setq doom-font (font-spec :size 11)))
+  (setq doom-font (font-spec :size 13)))
  ((string-equal system-name "isaiahfishbowl")
   (setq doom-font (font-spec :size 18))))
 ;;
