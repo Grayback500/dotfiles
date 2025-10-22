@@ -34,7 +34,7 @@
 ;;; code:
 ;;; Custom load path:
 (add-to-list 'custom-theme-load-path "~/usr/share/emacs/30.1/etc/themes")
-(setq doom-theme 'acme-theme)
+(setq doom-theme 'acme)
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
