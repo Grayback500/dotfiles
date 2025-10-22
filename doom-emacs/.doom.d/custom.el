@@ -43,8 +43,8 @@
  '(org-agenda-files
    '("~/org/fa2025/fall25.org" "/home/saint/org/Getting Started with Orgzly.org"))
  '(package-selected-packages
-   '(autothemer autumn-light-theme base16-theme company-jedi gruvbox-theme
-     jazz-theme light-soap-theme solo-jazz-theme)))
+   '(acme-theme autothemer autumn-light-theme base16-theme company-jedi
+     gruvbox-theme jazz-theme light-soap-theme solo-jazz-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
