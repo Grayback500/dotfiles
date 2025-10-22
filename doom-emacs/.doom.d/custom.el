@@ -5,7 +5,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3"
+   '("f1c8202c772d1de83eda4765fe21429a528a4fb350a28394d3705fe9678ed1f9"
+     "51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3"
      "4990532659bb6a285fee01ede3dfa1b1bdf302c5c3c8de9fad9b6bc63a9252f7"
      "b754d3a03c34cfba9ad7991380d26984ebd0761925773530e24d8dd8b6894738"
      "5bf50e9325062d35f1a304a97be13b16ce240ea2721ca9851c6584cff3aed81c"
@@ -43,8 +44,8 @@
  '(org-agenda-files
    '("~/org/fa2025/fall25.org" "/home/saint/org/Getting Started with Orgzly.org"))
  '(package-selected-packages
-   '(autothemer autumn-light-theme base16-theme company-jedi gruvbox-theme
-     jazz-theme light-soap-theme solo-jazz-theme)))
+   '(acme-theme autothemer autumn-light-theme base16-theme company-jedi
+     gruvbox-theme jazz-theme light-soap-theme solo-jazz-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

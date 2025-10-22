@@ -32,10 +32,9 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function.
 ;;; code:
-
 ;;; Custom load path:
 (add-to-list 'custom-theme-load-path "~/usr/share/emacs/30.1/etc/themes")
-(setq doom-theme 'gruvbox-dark-soft)
+(setq doom-theme 'acme-theme)
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -140,3 +139,6 @@
   (define-key org-mode-map (kbd "<f8>") 'my/org-study-clock-in) ; clock in
   (define-key org-mode-map (kbd "<f9>") 'my/org-study-clock-out)) ; clock out
 ;;; config.el ends here
+
+;; Setup for ispell on org files
+(setq ispell-program-name "hunspell")
