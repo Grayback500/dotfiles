@@ -138,7 +138,18 @@
   (define-key org-mode-map (kbd "<f7>") 'my/org-quick-properties) ; properties
   (define-key org-mode-map (kbd "<f8>") 'my/org-study-clock-in) ; clock in
   (define-key org-mode-map (kbd "<f9>") 'my/org-study-clock-out)) ; clock out
-;;; config.el ends here
 
 ;; Setup for ispell on org files
 (setq ispell-program-name "hunspell")
+
+;; Automatically open Treemacs on non-Org buffers
+(add-hook 'find-file-hook
+  (lambda ()
+    (unless (derived-mode-p 'org-mode)
+      (unless (treemacs-current-visibility)
+        (treemacs)))))
+
+;; Global Treemacs keybinds
+(global-set-key (kbd "C-x t t") #'treemacs)
+(global-set-key (kbd "C-x t b") #'treemacs-select-window)
+;;; config.el ends here
