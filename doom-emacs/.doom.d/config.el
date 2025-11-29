@@ -86,9 +86,9 @@
 ;;; Font Size
 ;; (for Windows because this is wayy too small)
 (cond
- ((string-equal system-name "kyoto")
+ ((string-equal (system-name) "kyoto")
   (setq doom-font (font-spec :size 13)))
- ((string-equal system-name "isaiahfishbowl")
+ ((string-equal (system-name) "isaiahfishbowl")
   (setq doom-font (font-spec :size 18))))
 ;;
 ;;
@@ -98,7 +98,6 @@
   (setq lsp-auto-guess-root t)       ; Try to guess the project root
   (setq lsp-restart 'auto-restart)   ; Automatically restart servers if needed
 )
-;;
 ;;; Configure the Python LSP client (pylsp)
 (after! lsp-python
   (setq lsp-python-ms-auto-install-server t) ; Auto-install if missing
@@ -107,11 +106,17 @@
   (setq lsp-signature-auto-activate '(:on-trigger-char :after-completion))
   (setq lsp-signature-doc-lines 3)
 )
-;;
 ;;; Enable LSP for Python files with deferred loading
 (add-hook 'python-mode-hook #'lsp-deferred)
+;;; Enable LSP UI for VS Code-esque hover infographic
+(use-package! lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-show-with-cursor t
+        lsp-ui-doc-show-with-mouse t))
 ;;
-;; Quick property setup - Properties for Org Pomodoro Studying
+;;; Quick property setup - Properties for Org Pomodoro Studying
 (defun my/org-quick-properties ()
   "Quickly add standard properties to current heading."
   (interactive)
