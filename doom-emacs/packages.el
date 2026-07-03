@@ -47,3 +47,6 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+;; Base16 themes since I don't know why doom won't just install them with doom sync
+(package! base16-theme)
